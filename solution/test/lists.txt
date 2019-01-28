@@ -1,0 +1,4 @@
+uneven          | 3, 4, 5               | 3, 5
+even            | 1, 2                  | 1, 2
+avarage uneven  | "one", "two", 6, 7, 8 | "one", "two", 7, 8
+very long uneven| "dsfsdfsdfvsdvsdv",, 6.78909, [dscnljskrf,, null, ~, 0], +_"??>,~@$#@&^@), nil, PATH_SEPARATOR, "whatever is long"| "dsfsdfsdfvsdvsdv",, 6.78909, [dscnljskrf,, null, 0], +_"??>,~@$#@&^@), nil, PATH_SEPARATOR, "whatever is long"
