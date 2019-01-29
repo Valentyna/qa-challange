@@ -15,7 +15,7 @@ class FinderTest < Test::Unit::TestCase
   end
 
   def test_reach_last_array
-    list = [[0,0.1,2.5.round,3],
+    list = [[0, 0.1, 2.5.round, 3],
             [4, 0.5510156, 0xD, -5],
             [555555555555, 7, 6, 6],
             [5, 7, 6, 6]]
@@ -25,11 +25,10 @@ class FinderTest < Test::Unit::TestCase
 
   # -----EXCEPTIONAL SCENARIOS------
 
-  def test_not_found
-    list = [[1, 2, 3, 4],
-            [5, 6, 7, 8]]
-    result = $finder.find(list, 9)
-    assert_equal([], result)
+  def test_wrong_parameters
+    assert_raise_message('Target is not integer') do
+      result = $finder.find(12, 'a')
+    end
   end
 
   def test_empty_list
@@ -39,6 +38,13 @@ class FinderTest < Test::Unit::TestCase
   end
 
   # -----ALTERNATIVE SCENARIOS------
+
+  def test_not_found
+    list = [[1, 2, 3, 4],
+            [5, 6, 7, 8]]
+    result = $finder.find(list, 9)
+    assert_equal([], result)
+  end
 
   def test_binary
     list = [[101, 0.5, 50, 6],
@@ -64,8 +70,8 @@ class FinderTest < Test::Unit::TestCase
 
   def test_zero
     list = [[nil, false, 'yin', "\0"], # none of these elements will pass condition
-            [[].length, 2, 3, 4],      # only one element passes condition here
-            [0, -0, "0".to_i, 0.0],    # all would pass
+            [[].length, 2, 3, 4], # only one element passes condition here
+            [0, -0, "0".to_i, 0.0], # all would pass
             [nil.to_i, 0.01.round, 1 - 1, ''.to_i(2)]] # all would pass
 =begin
 Organising test data this way can prove to be handy when requirements or system behavior changes (let's
